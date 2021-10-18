@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="Expt4.css">
+</head>
+
+<body>
+
+    <script>
+
+        function display() {
+            DispWin = window.open('', 'NewWin', 'toolbar=no,status=no,width=600,height=400')
+            message = "<ul><li><b>Name: </b>" + document.f1.Name.value;
+            message += "<li><b>Email: </b>" + document.f1.Email.value;
+            message += "<li><b>Password: </b>" + document.f1.pass.value;
+            message += "<li><b>Confirm Password: </b>" + document.f1.pass1.value;
+            message += "<li><b>Birthdate: </b>" + document.f1.birthday.value;
+            message += "<li><b>City: </b>" + document.f1.City.value
+            message += "<li><b>Languages Known: </b>"
+
+
+
+            var checkBox = document.getElementById("first");
+            var checkBox1 = document.getElementById("second");
+            var checkBox2 = document.getElementById("third");
+            var checkBox3 = document.getElementById("fourth");
+
+
+            if (checkBox.checked == true) {
+                message += "<li>C++</li>"
+            } else {
+                text.style.display = "none";
+            }
+
+            if (checkBox1.checked == true) {
+                message += "<li>Java</li>"
+            } else {
+                text.style.display = "none";
+            }
+
+            if (checkBox2.checked == true) {
+                message += "<li>Javascript</li>"
+            } else {
+                text.style.display = "none";
+            }
+            if (checkBox3.checked == true) {
+                message += "<li>Python</li>"
+            } else {
+                text.style.display = "none";
+            }
+
+
+            + "</ul>";
+
+            DispWin.document.write(message);
+        }
+
+
+
+
+        function checkPassword(form) {
+
+            pass = form.pass.value;
+
+            pass1 = form.pass1.value;
+
+            // If password not entered 
+
+            if (pass == '')
+
+                alert("Please enter Password");
+
+            // If confirm password not entered 
+
+            else if (pass1 == '')
+
+                alert("Please enter confirm password");
+
+
+
+            // If Not same return False.     
+
+            else if (pass != pass1) {
+
+                alert("\nPassword did not match: Please try again...")
+
+                return false;
+
+            }
+            // If same return True. 
+
+            else {
+
+                alert("Password Match: Welcome")
+
+                return true;
+
+            }
+
+        }
+    </script>
+
+    <div class="rform">
+
+        <h1>Register</h1>
+        <form name="f1" onSubmit="return checkPassword(this)">
+            Name: <input type="text" maxlength="20" name="Name" placeholder="Enter Username"> <br>
+            Email: <input type="email" name="Email" placeholder="Enter email"> <br>
+            Password: <input type="password" minlength="8"
+                title="must contain atleast one lowercase letter, one uppercase letter and 8 characters and one special character"
+                pattern="(?=^.{8,}$)((?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" name=pass
+                placeholder="Enter password" id="passw1" required> <br>
+            Confirm Password: <input type="password" name=pass1 placeholder="Re-enter password" id="confirm-pass"
+                required> <br>
+            Birth Date: <input type="date" id="birthday" name="birthday"> <br>
+            City: <select name="City" id="city" value="City">
+                <option selected disabled>--Select City--</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Bangalore">Bangalore</option>
+            </select><br>
+            <br><b>Languages Known</b><br> <input type="checkbox" id="first">C++</input><br>
+            <p id="text" style="display:none">C++</p>
+            <input type="checkbox" id="second">Java</input><br>
+            <p id="text1" style="display:none">Java</p>
+            <input type="checkbox" id="third">JavaScript</input><br>
+            <p id="text2" style="display:none">JavaScript</p>
+            <input type="checkbox" id="fourth">Python</input><br>
+            <p id="text3" style="display:none">Python</p>
+
+            <br><input type="submit" name="Signup" id="submit" onclick="display();">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
